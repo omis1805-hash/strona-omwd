@@ -371,15 +371,15 @@ header p {
     }
     .perk-perk{
         width: 90vw;
-        height: 50vh;
+        height: 40vh;
         gap: 1vh;
     }
     .perk-perk img{
-        width: 50vw;
-        min-height: 50vw;
+        width: 40vw;
+        min-height: 40vw;
         margin: 0 auto;
     }
     .perk-perk p{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
