@@ -223,6 +223,39 @@ header p {
 .burger.is-open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
+.perk-content{
+    min-height: 80vh;
+}
+.perk-grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3vw;
+}
+.perk-perk {
+    display: flex;
+    border: 2px solid rgba(176, 171, 255, 0.35);
+    border-radius: 8px;
+    background-color: #1e1e24;
+    width: 25vw;
+    height: 70vh;
+    padding: 2vw;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.perk-perk img{
+    width: 21vw;
+    min-height: 45vh;
+}
+.perk-perk h3{
+    text-align: center;
+}
+.perk-perk p{
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+}
 
 @keyframes zanik {
     0% {
@@ -247,6 +280,7 @@ header p {
         transform: translateY(0);
     }
 }
+
 
 @media (max-width: 850px) {
     header {
@@ -330,5 +364,22 @@ header p {
 
     .hero-media img {
         max-width: 100%;
+    }
+    .perk-grid{
+        flex-direction: column;
+        align-items: center;
+    }
+    .perk-perk{
+        width: 90vw;
+        height: 50vh;
+        gap: 1vh;
+    }
+    .perk-perk img{
+        width: 50vw;
+        min-height: 50vw;
+        margin: 0 auto;
+    }
+    .perk-perk p{
+        font-size: 1.2rem;
     }
 }
