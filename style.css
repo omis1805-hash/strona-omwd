@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: #18181b;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 1;
+    overflow-x: clip;
+    transition: opacity 0.3s ease;
+    animation: wejscieStrony 0.4s ease forwards;
+}
+
+body.wychodzenie {
+    opacity: 0;
+}
+
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding: 1.5rem 2rem;
+}
+
+nav {
+    display: flex;
+    max-height: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    
+
+}
+
+.menu a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, clip-path 0.3s ease, background-color 0.3s ease;
+    border: 2px solid rgba(124, 117, 255, 0.301);
+    padding: 1rem;
+    clip-path: polygon(15px 0,
+            100% 0,
+            100% calc(100% - 15px),
+            calc(100% - 15px) 100%,
+            0 100%,
+            0 15px);
+}
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.logo img {
+    height: 64px;
+    width: auto;
+    display: block;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    color: #a5a0ff;
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 100%,
+            0 100%,
+            0 0,
+            0 0);
+}
+
+.active {
+    background-color: rgba(154, 149, 255, 0.301);
+}
+
+.hero-content {
+    margin: auto;
+}
+
+header h1 {
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    /*text-align: center;*/
+}
+
+header p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: 0.5rem;
+    /*text-align: center;*/
+}
+.hero-actions{
+    margin-top: 2rem;
+}
+.hero-actions a{
+    display: inline-flex;
+    border: 1px solid rgba(124, 117, 255, 0.301);
+    border-radius: 8px;
+    background-color: rgba(90, 85, 187, 0.315);
+    padding: 0.5rem;
+    margin-right: 2rem;
+    text-decoration: none;
+    color: #a5a0ff;
+    transition: 0.3s;
+}
+
+.hero-actions a:hover{
+    scale: 1.2;
+}
+@keyframes zanik {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 0.2;
+    }
+}
+
+@keyframes wejscieStrony {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 850px) {
+
+    .menu {
+        gap: 0.75rem;
+        justify-content: center;
+    }
+
+    .menu a {
+        flex: 1 1 150px;
+        max-width: 260px;
+        padding: 0.7rem;
+    }
+
+    header h1 {
+        font-size: clamp(1rem, 6vw, 3rem);
+        /*text-align: center;*/
+    }
+}

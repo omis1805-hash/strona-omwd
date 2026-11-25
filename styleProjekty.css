@@ -1,0 +1,168 @@
+.hero-content {
+    margin: 10vh 0;
+}
+
+header {
+    min-height: 20dvh;
+}
+
+.sekcja-projekty {
+    max-width: 1150px;
+    width: 100%;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.sekcja-projekty h2 {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.05em;
+}
+
+.projekt-wiersz {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20rem;
+}
+
+.projekt-wiersz--odwrocony {
+    flex-direction: row-reverse;
+}
+
+.stos-zdjec {
+    position: relative;
+    flex: 0 0 520px;
+    max-width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stos-zdjec img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid rgba(124, 117, 255, 0.35);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    transition:
+        left 0.35s ease,
+        right 0.35s ease,
+        width 0.35s ease,
+        height 0.35s ease,
+        transform 0.35s ease,
+        z-index 0s linear 0.1s,
+        border-color 0.3s ease,
+        filter 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Zdjêcie g³ówne na œrodku */
+.zdjecie-glowne {
+    width: 380px;
+    height: 295px;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, 0) rotate(0deg) scale(1);
+    z-index: 2;
+    filter: brightness(1);
+}
+
+/* Zdjêcia boczne */
+.zdjecie-bok {
+    width: 315px;
+    height: 255px;
+    z-index: 1;
+    filter: brightness(0.82);
+}
+
+.zdjecie-lewe {
+    left: -100px;
+    right: auto;
+    transform: translateY(10px) rotate(-4deg) scale(1);
+}
+
+.zdjecie-prawe {
+    right: -100px;
+    left: auto;
+    transform: translateY(10px) rotate(4deg) scale(1);
+}
+
+/* Hover tylko na urz¹dzeniach z kursorem */
+@media (hover: hover) and (pointer: fine) {
+    .stos-zdjec img:hover {
+        z-index: 10;
+        filter: brightness(1);
+        border-color: rgba(165, 160, 255, 0.9);
+    }
+
+    .zdjecie-glowne:hover {
+        transform: translate(-50%, -6px) rotate(0deg) scale(1.08);
+    }
+
+    .zdjecie-lewe:hover {
+        transform: translateY(-6px) rotate(0deg) scale(1.1);
+    }
+
+    .zdjecie-prawe:hover {
+        transform: translateY(-6px) rotate(0deg) scale(1.1);
+    }
+}
+
+.projekt-opis {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.projekt-opis h3 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: #ffffff;
+}
+
+.projekt-opis p {
+    color: #c7c9d4;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsywnoœæ na mniejsze ekrany */
+@media (max-width: 850px) {
+    .projekt-wiersz,
+    .projekt-wiersz--odwrocony {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.75rem;
+    }
+
+    .stos-zdjec {
+        flex: none;
+        width: 100%;
+        max-width: 360px;
+        height: 220px;
+    }
+
+    .zdjecie-glowne {
+        width: 195px;
+        height: 135px;
+    }
+
+    .zdjecie-bok {
+        width: 140px;
+        height: 102px;
+    }
+
+    .zdjecie-lewe {
+        left: 0;
+    }
+
+    .zdjecie-prawe {
+        right: 0;
+    }
+}
