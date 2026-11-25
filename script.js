@@ -61,3 +61,33 @@ document.querySelectorAll('.stos-zdjec').forEach((stos) => {
         ustawKlasyPozycji(srodkowe, klasyKliknietego);
     });
 });
+
+const burgerBtn = document.getElementById('burgerBtn');
+const navMenu = document.getElementById('navMenu');
+
+if (burgerBtn && navMenu) {
+    burgerBtn.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('is-open');
+        burgerBtn.classList.toggle('is-open', isOpen);
+        burgerBtn.setAttribute('aria-expanded', String(isOpen));
+        burgerBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwórz menu');
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('is-open');
+            burgerBtn.classList.remove('is-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            burgerBtn.setAttribute('aria-label', 'Otwórz menu');
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
+            navMenu.classList.remove('is-open');
+            burgerBtn.classList.remove('is-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            burgerBtn.setAttribute('aria-label', 'Otwórz menu');
+        }
+    });
+}
