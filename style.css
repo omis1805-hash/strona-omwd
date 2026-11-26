@@ -242,8 +242,12 @@ header p {
     padding: 2vw;
     flex-direction: column;
     gap: 2vh;
+    transition: transform 0.2s ease;
 }
-
+.perk-perk:hover{
+    transform: translateY(-20px);
+    background-color: #242429;
+}
 .perk-perk img{
     width: 21vw;
     min-height: 45vh;
@@ -256,6 +260,73 @@ header p {
     text-align: center;
     color: white;
 }
+.example-section {
+    width: 100%;
+    max-width: 90%;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+.example-marquee {
+    overflow: hidden;
+    border: 1px solid rgba(124, 117, 255, 0.35);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 0.75rem 0;
+}
+
+.example-grid {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: przesunBranze 28s linear infinite;
+}
+
+.example-marquee:hover .example-grid,
+.example-marquee:focus-within .example-grid {
+    animation-play-state: paused;
+}
+
+.example-box {
+    background-color: rgba(124, 117, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(124, 117, 255, 0.45);
+    border-radius: 8px;
+    padding: 0.65rem 1.15rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.example-box:hover,
+.example-box:focus-visible {
+    background-color: rgba(124, 117, 255, 0.28);
+    border-color: #a5a0ff;
+    transform: translateY(-1px);
+}
+
+.example-box.is-active {
+    background-color: rgba(124, 117, 255, 0.45);
+    border-color: #c4c0ff;
+}
+
+@keyframes przesunBranze {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .example-grid {
+        animation: none;
+    }
+}
+
 
 @keyframes zanik {
     0% {

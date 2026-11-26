@@ -70,7 +70,7 @@ if (burgerBtn && navMenu) {
         const isOpen = navMenu.classList.toggle('is-open');
         burgerBtn.classList.toggle('is-open', isOpen);
         burgerBtn.setAttribute('aria-expanded', String(isOpen));
-        burgerBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwórz menu');
+        burgerBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwï¿½rz menu');
     });
 
     navMenu.querySelectorAll('a').forEach((link) => {
@@ -78,7 +78,7 @@ if (burgerBtn && navMenu) {
             navMenu.classList.remove('is-open');
             burgerBtn.classList.remove('is-open');
             burgerBtn.setAttribute('aria-expanded', 'false');
-            burgerBtn.setAttribute('aria-label', 'Otwórz menu');
+            burgerBtn.setAttribute('aria-label', 'Otwï¿½rz menu');
         });
     });
 
@@ -87,7 +87,44 @@ if (burgerBtn && navMenu) {
             navMenu.classList.remove('is-open');
             burgerBtn.classList.remove('is-open');
             burgerBtn.setAttribute('aria-expanded', 'false');
-            burgerBtn.setAttribute('aria-label', 'Otwórz menu');
+            burgerBtn.setAttribute('aria-label', 'Otwï¿½rz menu');
         }
     });
 }
+
+const grid = document.querySelector(".example-grid");
+const examples = [
+    "Mechanik",
+    "Fryzjer / Barber",
+    "Kosmetologia",
+    "Remonty",
+    "Hydraulik / Elektryk",
+    "Auto detailing"
+];
+
+function renderPaczke(ukrytaDlaCzytnikow = false) {
+    for (let i = 0; i < examples.length; i++) {
+        const box = document.createElement("button");
+        box.type = "button";
+        box.classList.add("example-box");
+        box.textContent = examples[i];
+
+        if (ukrytaDlaCzytnikow) {
+            box.setAttribute("aria-hidden", "true");
+            box.tabIndex = -1;
+        }
+
+
+        grid.appendChild(box);
+    }
+}
+
+function exampleMarquee() {
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    renderPaczke(false);
+    renderPaczke(true);
+}
+
+exampleMarquee();
