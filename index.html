@@ -53,6 +53,7 @@
         </section>
     </header>
     <section class="example-section" aria-label="Branże">
+        <a>Z NAMI MASZ ZAPEWNIONE</a>
         <div class="example-marquee">
             <div class="example-grid"></div>
         </div>
@@ -76,6 +77,45 @@
             </div>
         </div>
     </section>
+
+    <section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-formularz">
+            <h2>MASZ PYTANIA?</h2>
+            <p class="contact-subtitle">Skontaktuj się z nami — odpowiemy najszybciej, jak to możliwe.</p>
+
+            <form>
+                <div class="contact-row">
+                    <input type="text" name="name" placeholder="Imię" class="contact-input" required>
+                    <input type="email" name="email" placeholder="Email" class="contact-input" required>
+                </div>
+
+                <input type="text" name="topic" placeholder="Temat" class="contact-input" required>
+                <textarea name="message" placeholder="Treść wiadomości..." rows="6" class="contact-textarea" required></textarea>
+
+                <button type="submit" class="contact-submit">Wyślij wiadomość</button>
+            </form>
+        </div>
+
+        <div class="contact-grid">
+            <a href="mailto:omis1805@gmail.com" class="contact-box">
+                <img src="img/email.png" alt="Ikona e-mail">
+                <div class="contact-info">
+                    <span class="contact-label">E-MAIL</span>
+                    <span class="contact-value">email@kalita.pl</span>
+                </div>
+            </a>
+
+            <a href="tel:+4867676676676" class="contact-box">
+                <img src="img/phone.png" alt="Ikona telefonu">
+                <div class="contact-info">
+                    <span class="contact-label">NUMER TELEFONU</span>
+                    <span class="contact-value">67 676 676 676</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
     <script src="script.js"></script>
 </body>

@@ -1,3 +1,4 @@
+// Płynne przejście między podstronami (podpięte raz)
 document.querySelectorAll('a[href]').forEach((link) => {
     link.addEventListener('click', (e) => {
         const adres = link.getAttribute('href');
@@ -15,23 +16,7 @@ document.querySelectorAll('a[href]').forEach((link) => {
     });
 });
 
-document.querySelectorAll('a[href]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-        const adres = link.getAttribute('href');
-
-        if (!adres || adres.startsWith('#') || adres.startsWith('http') || link.target === '_blank') {
-            return;
-        }
-
-        e.preventDefault();
-        document.body.classList.add('wychodzenie');
-
-        setTimeout(() => {
-            window.location.href = adres;
-        }, 300);
-    });
-});
-
+// Stos zdjęć na mobile (jeśli występuje na podstronie)
 const czyTelefon = window.matchMedia('(max-width: 850px)');
 const klasyPozycji = ['zdjecie-glowne', 'zdjecie-bok', 'zdjecie-lewe', 'zdjecie-prawe'];
 
@@ -62,69 +47,64 @@ document.querySelectorAll('.stos-zdjec').forEach((stos) => {
     });
 });
 
+// Menu mobilne (burger)
 const burgerBtn = document.getElementById('burgerBtn');
 const navMenu = document.getElementById('navMenu');
 
 if (burgerBtn && navMenu) {
-    burgerBtn.addEventListener('click', () => {
-        const isOpen = navMenu.classList.toggle('is-open');
+    function ustawStanMenu(isOpen) {
+        navMenu.classList.toggle('is-open', isOpen);
         burgerBtn.classList.toggle('is-open', isOpen);
         burgerBtn.setAttribute('aria-expanded', String(isOpen));
-        burgerBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otw�rz menu');
+        burgerBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwórz menu');
+    }
+
+    burgerBtn.addEventListener('click', () => {
+        const isOpen = !navMenu.classList.contains('is-open');
+        ustawStanMenu(isOpen);
     });
 
     navMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('is-open');
-            burgerBtn.classList.remove('is-open');
-            burgerBtn.setAttribute('aria-expanded', 'false');
-            burgerBtn.setAttribute('aria-label', 'Otw�rz menu');
-        });
+        link.addEventListener('click', () => ustawStanMenu(false));
     });
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
-            navMenu.classList.remove('is-open');
-            burgerBtn.classList.remove('is-open');
-            burgerBtn.setAttribute('aria-expanded', 'false');
-            burgerBtn.setAttribute('aria-label', 'Otw�rz menu');
+            ustawStanMenu(false);
         }
     });
 }
 
+
 const grid = document.querySelector(".example-grid");
 const examples = [
-    "Mechanik",
-    "Fryzjer / Barber",
-    "Kosmetologia",
-    "Remonty",
-    "Hydraulik / Elektryk",
-    "Auto detailing"
+    "Wersja na telefon i PC",
+    "Klikalny numer telefonu",
+    "Mapa Google i dojazd",
+    "Cennik i opis usług",
+    "Galeria realizacji",
+    "Formularz kontaktowy",
+    "Podstawowe SEO lokalne",
+    "Certyfikat SSL i szybkość",
+    "Podpięcie domeny",
+    "Zero abonamentu — strona na własność"
 ];
 
-function renderPaczke(ukrytaDlaCzytnikow = false) {
-    for (let i = 0; i < examples.length; i++) {
+function exampleMarquee() {
+    if (!grid || examples.length === 0) return;
+
+    const loopedExamples = [...examples, ...examples, ...examples, ...examples];
+
+    loopedExamples.forEach((text) => {
         const box = document.createElement("button");
         box.type = "button";
         box.classList.add("example-box");
-        box.textContent = examples[i];
-
-        if (ukrytaDlaCzytnikow) {
-            box.setAttribute("aria-hidden", "true");
-            box.tabIndex = -1;
-        }
-
-
+        box.textContent = text;
+        box.addEventListener("click", () => {
+            box.classList.toggle("is-active");
+        });
         grid.appendChild(box);
-    }
-}
-
-function exampleMarquee() {
-    if (!grid) return;
-    grid.innerHTML = "";
-
-    renderPaczke(false);
-    renderPaczke(true);
+    });
 }
 
 exampleMarquee();
